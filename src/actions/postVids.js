@@ -27,16 +27,16 @@ export const createPost = (video, thumbnail) => new Promise((resolve, reject) =>
         .catch(() => reject())
 })
 
-export const getPost = (uid = firebase.auth().currentUser.uid) => new Promise((resolve, reject) => {
-    firebase.firestore()
-    .collection('post')
-    .where('creator', '==', uid)
-    .orderBy('creation', 'desc')
-    .onSnapshot((snapshot) => {
-        let posts = snapshot.docs.map(doc => {
-            const data = doc.data()
-            const id = doc.id
-            return {id, ...data}
-        })
-    })
-})
+// export const getPost = (uid = firebase.auth().currentUser.uid) => new Promise((resolve, reject) => {
+//     firebase.firestore()
+//     .collection('post')
+//     .where('creator', '==', uid)
+//     .orderBy('creation', 'desc')
+//     .onSnapshot((snapshot) => {
+//         let posts = snapshot.docs.map(doc => {
+//             const data = doc.data()
+//             const id = doc.id
+//             return {id, ...data}
+//         })
+//     })
+// })
