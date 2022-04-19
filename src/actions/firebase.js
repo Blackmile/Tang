@@ -1,35 +1,23 @@
-import firebase from 'firebase'
-import { createUserWithEmailAndPassword, getAuth, signOut } from 'firebase/auth';
-import { getStorage } from 'firebase/storage';
-import { initializeFirestore } from 'firebase/firestore'
+import * as firebase from 'firebase'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBLYNe4CKmPICgF5v_URdC4f40UNSV2R_c",
-  authDomain: "favi-2e1f3.firebaseapp.com",
-  projectId: "favi-2e1f3",
-  storageBucket: "favi-2e1f3.appspot.com",
-  messagingSenderId: "356984054810",
-  appId: "1:356984054810:web:44dc9020cdc5ba9d4adda3"
+  apiKey: "AIzaSyB5rqe8mDWm-uq25_UaU_Zv9AXyfUurf3A",
+  authDomain: "tang-245e6.firebaseapp.com",
+  projectId: "tang-245e6",
+  storageBucket: "tang-245e6.appspot.com",
+  messagingSenderId: "957874838519",
+  appId: "1:957874838519:web:5f7402b57fb43696766cf2"
 };
 
 // Initialize Firebase
-export const app = firebase.initializeApp(firebaseConfig);
-export const auth = firebase.auth(app);
-export const storage = firebase.storage(app);
-export const db = firebase.firestore(app, {
-    experimentalForceLongPolling: true,
-});
 
-
-export function signIn (email, password) {
-    // return signInWithEmailAndPassword(auth, email, password)
-    return firebase.auth().signInWithEmailAndPassword(email, password)
+let app;
+if(firebase.apps.length === 0) {
+  app = firebase.initializeApp(firebaseConfig)
+} else {
+  app = firebase.app()
 }
 
-export function signUp (email, password) {
-  return firebase.auth().createUserWithEmailAndPassword(email, password)
-}
+const auth = firebase.auth()
 
-export function logOut() {
-  return firebase.auth().signOut()
-}
+export { auth }

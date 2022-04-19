@@ -4,7 +4,7 @@ import { pickVideo, generateThumbnail} from "../actions/utils";
 import { auth } from "../actions/firebase";
 import { useNavigation } from "@react-navigation/native";
 import { createPost } from '../actions/postVids'
-import SignIn from './SignIn';
+import SignIn from './SignOut';
 
 
 function InsertVids(props) {

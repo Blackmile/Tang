@@ -3,21 +3,20 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native'
 
-import SignIn from './screens/SignIn'
+import SignOut from './screens/SignOut'
 import Home from './screens/Home'
 import Upload from './screens/Upload';
 
 const homeName = 'Home';
-const signName = 'SignIn';
+const signName = 'SignOut';
 const uploadName = 'Upload';
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function MainContainer() {
   return (
-    <NavigationContainer>
       <Tab.Navigator
-        style={{ marginTop: 50 }}
+        style={{ paddingTop: 50 }}
         initialRouteName={homeName}
         screenOptions={({route}) => ({
           tabBarLabel: ({focus, color, size}) => {
@@ -26,7 +25,7 @@ export default function MainContainer() {
             if (rn === homeName) {
               return <Image source={require('../assets/logo.png')} style={{ width: 100, height: 30, resizeMode: 'contain' }} />
             } else if (rn === signName) {
-              return <Button color={'black'} title='LogIn' />
+              return <Button color={'black'} title='Log Out' />
             } else if (rn === uploadName) {
               return <Image source={require('../assets/upload.png')} style={{ width: 60, height: 30, resizeMode: 'contain' }}/>
             }
@@ -35,9 +34,8 @@ export default function MainContainer() {
       >
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={uploadName} component={Upload} />
-        <Tab.Screen name={signName} component={SignIn} />
+        <Tab.Screen name={signName} component={SignOut} />
         
       </Tab.Navigator>
-    </NavigationContainer>
   )
 }
